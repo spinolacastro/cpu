@@ -1,9 +1,3 @@
-FROM ubuntu:12.04
+FROM openshift/php-55-centos7:latest
 
-RUN apt-get update
-RUN apt-get -y install sudo
-
-RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
-
-USER docker
-CMD /bin/bash
+RUN yum install -y sudo 
