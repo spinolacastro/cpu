@@ -1,3 +1,9 @@
-FROM fedora
-USER 1001
-CMD ["md5sum", "/dev/urandom"]
+FROM ubuntu:12.04
+
+RUN apt-get update
+RUN apt-get -y install sudo
+
+RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
+
+USER docker
+CMD /bin/bash
